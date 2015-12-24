@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#<3 vim
+export EDITOR=/usr/bin/vim
+
+#history settings
+export HISTSIZE=1000000;
+export HISTFILESIZE=$HISTSIZE;
+export HISTCONTROL=ignoredups;
+
+#golang exports
+if [ -f /usr/local/go/bin/go ]; then
+  export GOROOT=/usr/local/go
+  export PATH=$PATH:$GOROOT/bin
+else
+  echo "Go not installed at /usr/local/go/. Go check!"
+fi
+
+if [ -d $HOME/golang ]; then
+  export GOPATH=$GOPATH:$HOME/golang
+else
+  echo 'Unable to find workspace at '$HOME/golang'. Leaving $GOPATH alone.'
+fi
+
+
+
+
