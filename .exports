@@ -17,7 +17,11 @@ else
 fi
 
 if [ -d $HOME/golang ]; then
-  export GOPATH=$GOPATH:$HOME/golang
+  if [ -z "$GOPATH" ]; then
+    export GOPATH=$HOME/golang
+    else
+    export GOPATH=$GOPATH:$HOME/golang
+    fi
 else
   echo 'Unable to find workspace at '$HOME/golang'. Leaving $GOPATH alone.'
 fi
