@@ -1,0 +1,2 @@
+#dump all environment variables except git related ones
+alias fullenv='( set -o posix ; set ) | grep -v "__git"'

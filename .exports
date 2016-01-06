@@ -6,7 +6,8 @@ export EDITOR=/usr/bin/vim
 #history settings
 export HISTSIZE=1000000;
 export HISTFILESIZE=$HISTSIZE;
-export HISTCONTROL=ignoredups;
+export HISTCONTROL=ignoreboth;
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* help";
 
 #golang exports
 if [ -f /usr/local/go/bin/go ]; then
