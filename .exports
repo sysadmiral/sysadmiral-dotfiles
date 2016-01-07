@@ -29,7 +29,7 @@ fi
 
 #dotfiles scripts
 if [ -d $HOME/mygit/dotfiles/bin ]; then
-  export PATH=$PATH:HOME/mygit/dotfiles/bin
+  export PATH=$PATH:$HOME/mygit/dotfiles/bin
 fi
 
 
