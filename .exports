@@ -27,6 +27,10 @@ else
   echo 'Unable to find workspace at '$HOME/golang'. Leaving $GOPATH alone.'
 fi
 
+#dotfiles scripts
+if [ -d $HOME/mygit/dotfiles/bin ]; then
+  export PATH=$PATH:HOME/mygit/dotfiles/bin
+fi
 
 
 
