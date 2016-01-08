@@ -1,2 +1,5 @@
 #dump all environment variables except git related ones
 alias fullenv='( set -o posix ; set ) | grep -v "__git"'
+
+#open a URL in chrome from the command line
+alias open='google-chrome "$@"'
