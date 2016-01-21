@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#Stop the horrible errors in terminal when launching VSCode
+function __code {
+   if [ "$@x" != 'x' ]; then
+      (/opt/VSCode/VSCode-linux-x64/Code "$@" &) &> /dev/null
+   else
+      (/opt/VSCode/VSCode-linux-x64/Code &) &> /dev/null
+   fi
+}
