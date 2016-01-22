@@ -1,4 +1,9 @@
 #!/bin/bash
+#
+# List packages that were not in the base install
+# Author: Amo Chumber - @sysadmiral
+# Copyright (C) Amo Chumber - All Rights Reserved
+# Permission to copy and modify is granted under the MIT license
 
 TMPFILE="/tmp/seeinstalls.tmp"
 
