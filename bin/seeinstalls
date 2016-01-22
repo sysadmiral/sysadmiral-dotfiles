@@ -1,0 +1,27 @@
+#!/bin/bash
+
+TMPFILE="/tmp/seeinstalls.tmp"
+LOGFILE="/var/log/seeinstalls.log"
+
+function get_initial_installs {
+zgrep '^Package:' /var/log/installer/initial-status.gz | awk '{ print $2}' > $TMPFILE
+}
+
+function diff_lists {
+aptitude search -F %p '~i!~M' | awk '{ print $1}' | grep -v -F -f $TMPFILE
+}
+
+function clean_up {
+rm $TMPFILE
+}
+
+function pretty_log {
+echo "" >> $LOGFILE
+}
+
+date >> $LOGFILE
+pretty_log
+get_initial_installs
+diff_lists | tee -a $LOGFILE
+pretty_log
+clean_up
