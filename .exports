@@ -7,7 +7,7 @@ export EDITOR=/usr/bin/vim
 export HISTSIZE=1000000;
 export HISTFILESIZE=$HISTSIZE;
 export HISTCONTROL=ignoreboth;
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* help";
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* help:* --version";
 
 #golang exports
 if [ -f /usr/local/go/bin/go ]; then
@@ -17,7 +17,7 @@ else
   echo "Go not installed at /usr/local/go/. Go check!"
 fi
 
-if [ -d $HOME/golang ]; then
+if [ -d "$HOME/golang" ]; then
   if [ -z "$GOPATH" ]; then
     export GOPATH=$HOME/golang
     else
@@ -26,3 +26,9 @@ if [ -d $HOME/golang ]; then
 else
   echo 'Unable to find workspace at '$HOME/golang'. Leaving $GOPATH alone.'
 fi
+
+#haskell/cabal exports
+if [ -d "$HOME/.cabal/bin" ]; then
+  export PATH=$PATH:/home/amo/.cabal/bin
+fi
+ 
