@@ -7,4 +7,8 @@ function __code {
    else
       (/opt/VSCode/VSCode-linux-x64/Code &) &> /dev/null
    fi
-}
+   }
+
+function __localip {
+    ip addr show $(route | grep default | awk '{print $8}') | grep inet | awk '{print $1" "$2}' | cut -d\/ -f1
+    }
