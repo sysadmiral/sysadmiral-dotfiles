@@ -12,3 +12,7 @@ alias code='__code'
 #IP addresses
 alias remoteip='curl http://ipecho.net/plain; echo'
 alias localip='__localip'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
