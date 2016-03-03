@@ -6,15 +6,15 @@ if tput setaf 1 &> /dev/null; then
 	bold=$(tput bold);
 	reset=$(tput sgr0);
 	# Solarized colors, taken from http://git.io/solarized-colors.
-	black=$(tput setaf 0);
+	black=$(tput setaf 235);
 	blue=$(tput setaf 33);
 	cyan=$(tput setaf 37);
 	green=$(tput setaf 64);
 	orange=$(tput setaf 166);
 	purple=$(tput setaf 125);
-	red=$(tput setaf 124);
+	red=$(tput setaf 160);
 	violet=$(tput setaf 61);
-	white=$(tput setaf 15);
+	white=$(tput setaf 254);
 	yellow=$(tput setaf 136);
 else
 	bold='';
@@ -99,7 +99,7 @@ fi;
 PS1="\[\033]0;\w\007\]";
 PS1+="\[${bold}\]\n"; # newline
 PS1+="\[${userStyle}\]\u"; # username
-PS1+="\[${white}\] at ";
+PS1+="\[${white}\]@";
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${white}\] in ";
 PS1+="\[${green}\]\w"; # working directory
