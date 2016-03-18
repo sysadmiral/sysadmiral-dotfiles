@@ -14,7 +14,6 @@ export EDITOR=/usr/bin/vim
 export HISTSIZE=1000000;
 export HISTFILESIZE=$HISTSIZE;
 export HISTCONTROL=ignoreboth:erasedups;
-shopt -s histappend;
 export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND";
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* help:* --version";
 
