@@ -10,8 +10,17 @@ alias open='google-chrome "$@"'
 alias code='__code'
 
 #IP addresses
-alias remoteip='curl http://ipecho.net/plain; echo'
+alias remoteip='curl http://checkip.amazonaws.com'
 alias localip='__localip'
+
+#go to git dir
+alias mygit='cd "${HOME}"/mygit'
+
+#set volume from command line
+alias volume='__volume "$@"'
+
+#start http server in current dir
+alias server='__server'
 
 alias ..='cd ..'
 alias ...='cd ../..'

@@ -1,14 +1,32 @@
 #!/bin/bash
 
-#Stop the horrible errors in terminal when launching VSCode
-function __code {
-   if [ "$@x" != 'x' ]; then
-      (/opt/VSCode/VSCode-linux-x64/Code "$@" &) &> /dev/null
-   else
-      (/opt/VSCode/VSCode-linux-x64/Code &) &> /dev/null
-   fi
-   }
+__localip() {
+  ip addr show $(route | grep default | awk '{print $8}') | grep inet | awk '{print $1" "$2}' | cut -d\/ -f1
+}
 
-function __localip {
-    ip addr show $(route | grep default | awk '{print $8}') | grep inet | awk '{print $1" "$2}' | cut -d\/ -f1
-    }
+#Stop the horrible errors in terminal when launching VSCode
+__code() {
+   if [ "$@x" != 'x' ]; then
+      (/opt/VSCode/code "$@" &) &> /dev/null
+   else
+      (/opt/VSCode/code &) &> /dev/null
+   fi
+}
+
+# Start an HTTP server from a directory, optionally specifying the port
+__server() {
+  local port="${1:-8000}"
+  sleep 1 && open "http://localhost:${port}/" &
+  # Set the default Content-Type to `text/plain` instead of `application/octet-stream
+  # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+  python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
+}
+
+#set volume from command line
+__volume() {
+  if [ -z $1 ]; then
+    amixer -D pulse sget Master
+  else
+    amixer -D pulse sset Master $1%
+  fi
+}
