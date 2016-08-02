@@ -5,4 +5,4 @@ if [ $UID -ne 0 ]; then
 	exit 1
 fi
 
-apt-get update && apt-get -y upgrade && apt-get autoremove && apt-get autoclean
+apt update && apt upgrade && apt autoremove && apt autoclean
