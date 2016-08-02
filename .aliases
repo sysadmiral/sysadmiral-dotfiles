@@ -14,14 +14,22 @@ alias remoteip='curl http://checkip.amazonaws.com'
 alias localip='__localip'
 
 #go to git dir
-alias mygit='cd "${HOME}"/mygit'
+alias mygit='cd "${HOME}"/mygit; ls'
 
 #set volume from command line
-alias volume='__volume "$@"'
+alias volume="__volume $1"
 
 #start http server in current dir
 alias server='__server'
 
+#lazy cd'ing
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+#prefer mosh
+if [[ -f ${HOME}/bin/mosh.sh ]]; then
+  alias ssh=${HOME}/bin/mosh.sh
+fi
+
+alias fixmouse='xkbset ma 60 10 10 5 2'

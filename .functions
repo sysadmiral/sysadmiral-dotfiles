@@ -24,9 +24,39 @@ __server() {
 
 #set volume from command line
 __volume() {
-  if [ -z $1 ]; then
+  if [[ -z $1 ]]; then
     amixer -D pulse sget Master
   else
     amixer -D pulse sset Master $1%
+    if [[ $1 == 'off' ]] || [[ $1 == 0 ]]; then
+      volumeicon="audio-volume-muted-blocked-panel.png"
+    elif [[ $1 -ge 1 && $1 -lt 50 ]]; then
+      volumeicon="audio-volume-low.png"
+    elif [[ $1 -lt 90 ]]; then
+      volumeicon="audio-volume-medium.png"
+    elif [[ $1 -le 100 ]]; then
+      volumeicon="audio-volume-high.png"
+    else
+      echo "what the hell are you trying to do?!"
+    fi
+    notify-send -i /usr/share/icons/Mint-X/status/48/${volumeicon} "Volume set to $1"
   fi
+}
+
+pathappend() {
+  for ARG in "$@"
+  do
+    if [[ -d "$ARG" ]] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$ARG"
+    fi
+  done
+}
+
+pathprepend() {
+  for ARG in "$@"
+  do
+    if [[-d "$ARG"]]  && [[ ":$PATH:" != *":$ARG:"* ]]; then
+        PATH="$ARG${PATH:+":$PATH"}"
+    fi
+  done
 }
