@@ -30,6 +30,8 @@ alias ....='cd ../../..'
 #prefer mosh
 if [[ -f ${HOME}/bin/mosh.sh ]]; then
   alias ssh=${HOME}/bin/mosh.sh
+elif [[ -f /usr/bin/mosh ]]; then
+  alias ssh=/usr/bin/mosh
 fi
 
 alias fixmouse='xkbset ma 60 10 10 5 2'

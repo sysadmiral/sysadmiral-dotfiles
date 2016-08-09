@@ -45,3 +45,5 @@ fi
 if [[ -d "${GOPATH}/bin" ]]; then
   pathappend ${GOPATH}/bin
 fi
+
+[[ -d "${HOME}/bin" ]] && pathappend ${HOME}/bin
