@@ -1,4 +1,4 @@
 [[ -r "/etc/profile" ]] && [[ -f "/etc/profile" ]] && source /etc/profile
 
-[[ -r "${HOME}/.bash_profile ]] && [[ -f "${HOME}/.bash_profile" ]] && \
+[[ -r "${HOME}/.bash_profile" ]] && [[ -f "${HOME}/.bash_profile" ]] && \
   source $HOME/.bash_profile

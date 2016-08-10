@@ -27,8 +27,11 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* help:* --version";
 [[ -f "/usr/local/go/bin/go" ]] && export GOROOT="/usr/local/go" && \
   pathappend ${GOROOT}/bin || echo "GOROOT not set. Is Go installed?"
 
-[[ -d "${HOME}/golang" ]] && { [[ ":${GOPATH}:" != *":${HOME}/golang:"* ]] && \
-  export GOPATH="${HOME}/golang${GOPATH:+":${GOPATH}"}"; }
+if [[ -d "${HOME}/golang" ]]; then
+	if [[ ":${GOPATH}:" != *":${HOME}/golang:"* ]]; then
+		GOPATH="${HOME}/golang:${GOPATH}"
+  fi
+fi
 
 [[ -d "${GOPATH}/bin" ]] && pathappend ${GOPATH}/bin || \
   echo 'Go bindir not found at '${GOPATH}/bin'. Not adding to $PATH.'
