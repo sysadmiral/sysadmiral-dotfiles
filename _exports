@@ -3,14 +3,14 @@
 export LC_ALL=en_GB.UTF-8
 
 #more colours in terminal
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+if [[ "${COLORTERM}" = "gnome-*" && "${TERM}" = "xterm" ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM='gnome-256color';
 elif infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM='xterm-256color';
 fi;
 
 #<3 vim
-export EDITOR=/usr/bin/vim
+export EDITOR='/usr/bin/vim'
 
 #history settings
 export HISTSIZE=1000000;
@@ -19,31 +19,27 @@ export HISTCONTROL=ignoreboth:erasedups;
 export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND";
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* help:* --version";
 
+#local scripts
+[[ -d "${HOME}/bin" ]] && pathappend ${HOME}/bin || \
+  echo 'No bindir found at '${HOME}/bin'. Not adding to $PATH.'
+
 #golang exports
-if [ -f /usr/local/go/bin/go ]; then
-  export GOROOT=/usr/local/go
-  pathappend $GOROOT/bin
-else
-  echo "Go not installed at /usr/local/go/. Go check!"
-fi
+[[ -f "/usr/local/go/bin/go" ]] && export GOROOT="/usr/local/go" && \
+  pathappend ${GOROOT}/bin || echo "GOROOT not set. Is Go installed?"
 
-if [ -d "$HOME/golang" ]; then
-  if [ -z "$GOPATH" ]; then
-    export GOPATH=$HOME/golang
-    else
-    export GOPATH=$GOPATH:$HOME/golang
-    fi
-else
-  echo 'Unable to find workspace at '$HOME/golang'. Leaving $GOPATH alone.'
-fi
+[[ -d "${HOME}/golang" ]] && { [[ ":${GOPATH}:" != *":${HOME}/golang:"* ]] && \
+  export GOPATH="${HOME}/golang${GOPATH:+":${GOPATH}"}"; }
 
-#haskell/cabal exports
-if [ -d "$HOME/.cabal/bin" ]; then
-  pathappend /home/amo/.cabal/bin
-fi
+[[ -d "${GOPATH}/bin" ]] && pathappend ${GOPATH}/bin || \
+  echo 'Go bindir not found at '${GOPATH}/bin'. Not adding to $PATH.'
 
-if [[ -d "${GOPATH}/bin" ]]; then
-  pathappend ${GOPATH}/bin
-fi
+#haskell/cabal exports - disabled while using shellcheck from packages
+#[[ -d "${HOME}/.cabal/bin" ]] && pathappend ${HOME}/.cabal/bin || \
+#  echo 'Cabal bindir not found at '${HOME}/.cabal/bin'. Is cabal installed?'
 
-[[ -d "${HOME}/bin" ]] && pathappend ${HOME}/bin
+#nvm exports
+[[ -d "${HOME}/.nvm" ]] && export NVM_DIR="${HOME}/.nvm" || \
+  echo 'nvm not found in '${HOME}'. Not setting $NVM_DIR.'
+
+#rvm exports
+[[ -f "${HOME}/.rvm/bin" ]] && pathappend ${HOME}/.rvm/bin

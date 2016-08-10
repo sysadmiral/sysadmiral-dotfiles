@@ -1,5 +1,4 @@
-if [[ -f $HOME/.bash_profile ]]; then
-  source $HOME/.bash_profile
-fi
+[[ -r "/etc/profile" ]] && [[ -f "/etc/profile" ]] && source /etc/profile
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -r "${HOME}/.bash_profile ]] && [[ -f "${HOME}/.bash_profile" ]] && \
+  source $HOME/.bash_profile
