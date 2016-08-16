@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 export LC_ALL=en_GB.UTF-8
 
 #more colours in terminal
 if [[ "${COLORTERM}" = "gnome-*" && "${TERM}" = "xterm" ]] && infocmp gnome-256color >/dev/null 2>&1; then
-	export TERM='gnome-256color';
+  export TERM='gnome-256color';
 elif infocmp xterm-256color >/dev/null 2>&1; then
-	export TERM='xterm-256color';
+  export TERM='xterm-256color';
 fi;
 
 #<3 vim
@@ -27,11 +27,18 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* help:* --version";
 [[ -f "/usr/local/go/bin/go" ]] && export GOROOT="/usr/local/go" && \
   pathappend ${GOROOT}/bin || echo "GOROOT not set. Is Go installed?"
 
-if [[ -d "${HOME}/golang" ]]; then
-	if [[ ":${GOPATH}:" != *":${HOME}/golang:"* ]]; then
-		GOPATH="${HOME}/golang:${GOPATH}"
+set_go_path() {
+local mygopath="${HOME}/golang"
+if [[ -d "${mygopath}" ]]; then
+  if [[ -z "${GOPATH}" ]]; then
+    export GOPATH="${mygopath}"
+  elif [[ ":${GOPATH}:" != *":${mygopath}:"* ]]; then
+    export GOPATH="${mygopath}:${GOPATH}"
   fi
 fi
+}
+
+set_go_path
 
 [[ -d "${GOPATH}/bin" ]] && pathappend ${GOPATH}/bin || \
   echo 'Go bindir not found at '${GOPATH}/bin'. Not adding to $PATH.'
@@ -45,4 +52,5 @@ fi
   echo 'nvm not found in '${HOME}'. Not setting $NVM_DIR.'
 
 #rvm exports
-[[ -f "${HOME}/.rvm/bin" ]] && pathappend ${HOME}/.rvm/bin
+[[ -d "${HOME}/.rvm/bin" ]] && pathappend ${HOME}/.rvm/bin || \
+  echo 'rvm not found in '${HOME}'. Not adding rvm to $PATH.'

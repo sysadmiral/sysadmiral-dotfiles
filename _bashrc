@@ -1,4 +1,24 @@
-[[ -r "/etc/profile" ]] && [[ -f "/etc/profile" ]] && source /etc/profile
+# If not running interactively, don't do anything
+case $- in
+  *i*) ;;
+  *) return;;
+esac
+
+[[ -r "/etc/profile" ]] && [[ -f "/etc/profile" ]] && \
+  source /etc/profile
 
 [[ -r "${HOME}/.bash_profile" ]] && [[ -f "${HOME}/.bash_profile" ]] && \
-  source $HOME/.bash_profile
+  source $HOME/.bash_profile || echo "something screwy with sourcing bash_profile!"
+
+#if ! shopt -oq posix; then
+#  if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+#    . /usr/share/bash-completion/bash_completion
+#  elif [[ -f /etc/bash_completion ]]; then
+#    . /etc/bash_completion
+#  fi
+#fi
+
+#for file in /etc/bash_completion.d/* ; do
+#  [[ -r "${file}" ]] && [[ -f "${file}" ]] && source "${file}"
+#done
+#unset file

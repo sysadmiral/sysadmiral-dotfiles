@@ -29,7 +29,7 @@ __volume() {
   else
     amixer -D pulse sset Master $1%
     if [[ $1 == 'off' ]] || [[ $1 == 0 ]]; then
-      volumeicon="audio-volume-muted-blocked-panel.png"
+      volumeicon="audio-volume-muted.png"
     elif [[ $1 -ge 1 && $1 -lt 50 ]]; then
       volumeicon="audio-volume-low.png"
     elif [[ $1 -lt 90 ]]; then
@@ -39,7 +39,7 @@ __volume() {
     else
       echo "what the hell are you trying to do?!"
     fi
-    notify-send -i /usr/share/icons/Mint-X/status/48/${volumeicon} "Volume set to $1"
+    notify-send -i /usr/share/icons/Adwaita/48x48/status/${volumeicon} "Volume set to $1"
   fi
 }
 
