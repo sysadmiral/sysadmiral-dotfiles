@@ -24,6 +24,8 @@ __server() {
 
 #set volume from command line
 __volume() {
+  local volumeicon
+
   if [[ -z $1 ]]; then
     amixer -D pulse sget Master
   else

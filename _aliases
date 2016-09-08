@@ -14,7 +14,7 @@ alias remoteip='curl http://checkip.amazonaws.com'
 alias localip='__localip'
 
 #go to git dir
-alias mygit='cd "${HOME}"/mygit; ls'
+alias mg='cd "${HOME}"/mygit; ls'
 
 #set volume from command line
 alias volume="__volume $1"
@@ -35,3 +35,5 @@ elif [[ -f /usr/bin/mosh ]]; then
 fi
 
 alias fixmouse='xkbset ma 60 10 10 5 2'
+
+alias less='less -Ri'
