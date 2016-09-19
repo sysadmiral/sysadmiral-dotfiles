@@ -1,0 +1,11 @@
+#! /bin/bash
+
+gitdir=${HOME}/mygit/
+repos=`find $gitdir -name *\.git | sed 's_'"$gitdir"'__' | cut -d\/ -f1`
+
+for repo in $repos;
+	do echo "Updating $repo...";
+	pushd $gitdir$repo && git pull;
+	popd;
+	echo #make it easier to read
+done;
