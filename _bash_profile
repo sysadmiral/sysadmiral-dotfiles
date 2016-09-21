@@ -13,5 +13,5 @@ unset file
 #source specific files and functions
 [[ -n "${NVM_DIR}" ]] && [[ -s "${NVM_DIR}/nvm.sh" ]] && \
   source "${NVM_DIR}/nvm.sh"
-[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
-[[ -s "${HOME}/.avn/bin/avn.sh" ]] && source "${HOME}/.avn/bin/avn.sh"
+[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm" || echo "rvm not installed or install went wrong"
+[[ -s "${HOME}/.avn/bin/avn.sh" ]] && source "${HOME}/.avn/bin/avn.sh" || echo "avn not installed or did you run 'avn setup' yet?"
