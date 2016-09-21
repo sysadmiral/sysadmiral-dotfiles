@@ -1,1 +1,0 @@
-for file in $(find $PWD -name ".*" ! -path . ! -name ".git" ! -name ".*.swp"); do f=$(basename $file); ln -sfn $file $HOME/$f; done
