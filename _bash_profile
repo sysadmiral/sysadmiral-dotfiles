@@ -15,3 +15,7 @@ unset file
   source "${NVM_DIR}/nvm.sh"
 [[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm" || echo "rvm not installed or install went wrong"
 [[ -s "${HOME}/.avn/bin/avn.sh" ]] && source "${HOME}/.avn/bin/avn.sh" || echo "avn not installed or did you run 'avn setup' yet?"
+
+#update password-store on login
+pass git pull
+
