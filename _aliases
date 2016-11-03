@@ -14,7 +14,7 @@ alias remoteip='curl http://checkip.amazonaws.com'
 alias localip='__localip'
 
 #go to git dir
-[[ -d "${HOME}/mygit" ]] && alias mg='cd "${HOME}"/mygit; ls' || alias mg='echo "${HOME}"/mygit is not a dir. Set this up first..."
+[[ -d "${HOME}/mygit" ]] && alias mg='cd "${HOME}"/mygit; ls' || alias mg='echo "${HOME}"/mygit is not a dir. Set this up first...'
 
 #set volume from command line
 alias volume="__volume $1"
@@ -39,4 +39,4 @@ alias fixmouse='xkbset ma 60 10 10 5 2'
 alias less='less -Ri'
 
 #alias packer to packer because of https://github.com/mitchellh/packer/issues/1117
-[[ -f ${HOME}/bin/packer ]] && alias packr=${HOME}/bin/packer || alias packr='echo "${HOME}"/bin/packer is not there. Install Packer first???'
+[[ -x ${HOME}/bin/packer ]] && alias packr=${HOME}/bin/packer || alias packr='echo "${HOME}"/bin/packer is not there. Install Packer first???'
