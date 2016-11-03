@@ -37,3 +37,6 @@ fi
 alias fixmouse='xkbset ma 60 10 10 5 2'
 
 alias less='less -Ri'
+
+#alias packer to packer because of https://github.com/mitchellh/packer/issues/1117
+[[ -f ${HOME}/bin/packer ]] && alias packr=${HOME}/bin/packer || alias packr='echo "${HOME}"/bin/packer is not there. Install Packer first???'
