@@ -57,7 +57,7 @@ pathappend() {
 pathprepend() {
   for ARG in "$@"
   do
-    if [[-d "$ARG"]]  && [[ ":$PATH:" != *":$ARG:"* ]]; then
+    if [[ -d "$ARG" ]]  && [[ ":$PATH:" != *":$ARG:"* ]]; then
         PATH="$ARG${PATH:+":$PATH"}"
     fi
   done

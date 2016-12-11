@@ -2,28 +2,28 @@
 
 export LC_ALL=en_GB.UTF-8
 
-#more colours in terminal
+# more colours in terminal
 if [[ "${COLORTERM}" = "gnome-*" && "${TERM}" = "xterm" ]] && infocmp gnome-256color >/dev/null 2>&1; then
   export TERM='gnome-256color';
 elif infocmp xterm-256color >/dev/null 2>&1; then
   export TERM='xterm-256color';
 fi;
 
-#<3 vim
+# <3 vim
 export EDITOR='/usr/bin/vim'
 
-#history settings
+# history settings
 export HISTSIZE=1000000;
 export HISTFILESIZE=$HISTSIZE;
 export HISTCONTROL=ignoreboth:erasedups;
 export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND";
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* help:* --version";
 
-#local scripts
+# local scripts
 [[ -d "${HOME}/bin" ]] && pathappend ${HOME}/bin || \
   echo 'No bindir found at '${HOME}/bin'. Not adding to $PATH.'
 
-#golang exports
+# golang exports
 [[ -f "/usr/local/go/bin/go" ]] && export GOROOT="/usr/local/go" && \
   pathappend ${GOROOT}/bin || echo "GOROOT not set. Is Go installed?"
 
@@ -43,14 +43,20 @@ set_go_path
 [[ -d "${GOPATH}/bin" ]] && pathappend ${GOPATH}/bin || \
   echo 'Go bindir not found at '${GOPATH}/bin'. Not adding to $PATH.'
 
-#haskell/cabal exports - disabled while using shellcheck from packages
+# haskell/cabal exports - disabled while using shellcheck from packages
 #[[ -d "${HOME}/.cabal/bin" ]] && pathappend ${HOME}/.cabal/bin || \
 #  echo 'Cabal bindir not found at '${HOME}/.cabal/bin'. Is cabal installed?'
 
-#nvm exports
+# nvm exports
 [[ -d "${HOME}/.nvm" ]] && export NVM_DIR="${HOME}/.nvm" || \
   echo 'nvm not found in '${HOME}'. Not setting $NVM_DIR.'
 
-#rvm exports
-[[ -d "${HOME}/.rvm/bin" ]] && pathappend ${HOME}/.rvm/bin || \
+# rvm exports
+[[ -d "${HOME}/.rvm/bin" ]] && pathprepend ${HOME}/.rvm/bin || \
   echo 'rvm not found in '${HOME}'. Not adding rvm to $PATH.'
+
+# my git dir
+[[ -d "${HOME}/mygit" ]] && export MY_GIT_DIR="${HOME}/mygit"
+
+# trim dir for bash_prompt
+[[ "${BASH_VERSINFO[0]}" -lt 4 ]] || export PROMPT_DIRTRIM=3
