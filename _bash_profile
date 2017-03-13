@@ -6,7 +6,8 @@ shopt -s histappend;
 
 #Load in our dotfiles
 for file in ~/.{aliases,functions,exports,bash_prompt}; do
-  [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file" || echo "Could not source ${file}. What up?!"
+  [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file" || \
+  echo "Could not source ${file}. What up?!"
 done
 unset file
 
@@ -14,6 +15,8 @@ unset file
 [[ -n "${NVM_DIR}" ]] && [[ -s "${NVM_DIR}/nvm.sh" ]] && \
   source "${NVM_DIR}/nvm.sh" || echo "nvm not installed or install went wrong"
 
-[[ -s "${HOME}/.avn/bin/avn.sh" ]] && source "${HOME}/.avn/bin/avn.sh" || echo "avn not installed or did you run 'avn setup' yet?"
+[[ -s "${HOME}/.avn/bin/avn.sh" ]] && source "${HOME}/.avn/bin/avn.sh" || \
+  echo "avn not installed or did you run 'avn setup' yet?"
 
-[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm" || echo "rvm not installed or install went wrong"
+[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm" || \
+  echo "rvm not installed or install went wrong"

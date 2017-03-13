@@ -1,7 +1,8 @@
 #! /bin/bash
 
 gitdir=${HOME}/mygit/
-repos=`find $gitdir -name *\.git | sed 's_'"$gitdir"'__' | cut -d\/ -f1`
+repos=`find $gitdir -name *\.git | sed 's_'"$gitdir"'__' | cut -d\/ -f1 | \
+  sort -u`
 
 for repo in $repos;
 	do echo "Updating $repo...";
