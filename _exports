@@ -60,3 +60,6 @@ set_go_path
 
 # trim dir for bash_prompt
 [[ "${BASH_VERSINFO[0]}" -lt 4 ]] || export PROMPT_DIRTRIM=3
+
+# enable pass extensions
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
