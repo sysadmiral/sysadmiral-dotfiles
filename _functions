@@ -4,15 +4,6 @@ __localip() {
   ip addr show $(route | grep default | awk '{print $8}') | grep inet | awk '{print $1" "$2}' | cut -d\/ -f1
 }
 
-#Stop the horrible errors in terminal when launching VSCode
-__code() {
-   if [ "$@x" != 'x' ]; then
-      (/opt/VSCode/code "$@" &) &> /dev/null
-   else
-      (/opt/VSCode/code &) &> /dev/null
-   fi
-}
-
 # Start an HTTP server from a directory, optionally specifying the port
 __server() {
   local port="${1:-8000}"

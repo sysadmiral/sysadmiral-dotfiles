@@ -4,10 +4,8 @@
 alias fullenv='( set -o posix ; set ) | grep -v "__git"'
 
 #open a URL in chrome from the command line
-alias open='google-chrome "$@"'
-
-#VSCode
-alias code='__code'
+command -v google-chrome &> /dev/null && alias open='google-chrome "$@"' || \
+  alias open='echo "google-chrome is not installed"'
 
 #IP addresses
 alias remoteip='curl http://checkip.amazonaws.com'
@@ -30,13 +28,11 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 #prefer mosh
-if [[ -f ${HOME}/bin/mosh.sh ]]; then
+if [[ -x ${HOME}/bin/mosh.sh ]]; then
   alias ssh=${HOME}/bin/mosh.sh
-elif [[ -f /usr/bin/mosh ]]; then
+elif [[ -x /usr/bin/mosh ]]; then
   alias ssh=/usr/bin/mosh
 fi
-
-alias fixmouse='xkbset ma 60 10 10 5 2'
 
 alias less='less -Ri'
 
@@ -46,4 +42,5 @@ alias less='less -Ri'
   alias packr='echo "${HOME}"/bin/packer is not there. Install Packer first???'
 
 #alias netdata
-[[ -x /usr/sbin/netdata ]] && alias netdata='open "http://localhost:19999"'
+[[ -x /usr/sbin/netdata ]] && alias netdata='open "http://localhost:19999"' || \
+  alias netdata='echo "Is netdata installed?  ¯\_(ツ)_/¯"'
