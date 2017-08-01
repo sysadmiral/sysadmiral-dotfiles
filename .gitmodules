@@ -1,0 +1,15 @@
+[submodule "vim/pack/sysadmiral/start/nofrils"]
+  path = vim/pack/sysadmiral/start/nofrils
+  url = https://github.com/robertmeta/nofrils.git
+
+[submodule "vim/pack/sysadmiral/start/editorconfig-vim"]
+	path = vim/pack/sysadmiral/start/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
+
+[submodule "vim/pack/sysadmiral/start/vim-sensible"]
+	path = vim/pack/sysadmiral/start/vim-sensible
+	url = https://github.com/tpope/vim-sensible.git
+
+[submodule "vim/pack/sysadmiral/start/vim-terraform"]
+	path = vim/pack/sysadmiral/start/vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git
