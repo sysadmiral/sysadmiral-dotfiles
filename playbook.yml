@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: add bash related file symlinks
+      file:
+        src: "{{ playbook_dir }}/_bash_{{ item }}"
+        dest: "{{ ansible_env.HOME }}/.bash_{{ item }}"
+        state: link
+      with_items:
+        - aliases
+        - exports
+        - functions
+        - profile
+        - prompt
+
+    - name: add bash rc type file symlinks
+      file:
+        src: "{{ playbook_dir }}/_{{ item }}rc"
+        dest: "{{ ansible_env.HOME }}/.{{ item }}rc"
+        state: link
+      with_items:
+        - bash
+        - input
+        - nvm
+        - vim
+
+    - name: add vim directory symlink
+      file:
+        src: "{{ playbook_dir }}/vim/"
+        dest: "{{ ansible_env.HOME }}/.vim"
