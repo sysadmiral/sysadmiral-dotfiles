@@ -38,8 +38,8 @@ alias less='less -Ri'
 
 #alias packer to packr because of
 #https://github.com/mitchellh/packer/issues/1117
-[[ -x ${HOME}/bin/packer ]] && alias packr=${HOME}/bin/packer || \
-  alias packr='echo "${HOME}"/bin/packer is not there. Install Packer first???'
+[[ -x /usr/local/bin/packer ]] && alias packer.io=/usr/local/bin/packer || \
+  alias packer.io='echo /usr/local/bin/packer is not there. Install Packer first???'
 
 #alias netdata
 [[ -x /usr/sbin/netdata ]] && alias netdata='open "http://localhost:19999"' || \

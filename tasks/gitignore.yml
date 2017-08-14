@@ -1,0 +1,36 @@
+# build a global gitignore file
+---
+- name: create working dir
+  file:
+    path: .ansible/gitignore.d/
+    state: directory
+
+- name: fetch gitignores of things we want to ignore
+  get_url:
+    url: "https://raw.githubusercontent.com/github/gitignore/master/Global/{{ item }}.gitignore"
+    dest: ".ansible/gitignore.d/{{ item }}.gitignore"
+  with_items:
+    - Ansible
+    - Archives
+    - GPG
+    - Linux
+    - SVN
+    - Vagrant
+    - Vim
+    - VisualStudioCode
+
+- name: copy manual gitignore to gitignore.d
+  copy:
+    src: files/dotfiles/_gitignore
+    dest: .ansible/gitignore.d/
+
+- name: assemble global gitignore
+  assemble:
+    src: .ansible/gitignore.d/
+    dest: "{{ ansible_env.HOME }}/.gitignore"
+
+- name: set global gitignore
+  git_config:
+    name: core.excludesfile
+    scope: global
+    value: "{{ ansible_env.HOME }}/.gitignore"
