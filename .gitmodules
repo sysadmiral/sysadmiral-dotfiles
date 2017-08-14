@@ -3,13 +3,14 @@
   url = https://github.com/robertmeta/nofrils.git
 
 [submodule "files/vim/pack/sysadmiral/start/editorconfig-vim"]
-	path = files/vim/pack/sysadmiral/start/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim.git
+  path = files/vim/pack/sysadmiral/start/editorconfig-vim
+  url = https://github.com/editorconfig/editorconfig-vim.git
 
 [submodule "files/vim/pack/sysadmiral/start/vim-sensible"]
-	path = files/vim/pack/sysadmiral/start/vim-sensible
-	url = https://github.com/tpope/vim-sensible.git
+  path = files/vim/pack/sysadmiral/start/vim-sensible
+  url = https://github.com/tpope/vim-sensible.git
 
 [submodule "files/vim/pack/sysadmiral/start/vim-terraform"]
-	path = files/vim/pack/sysadmiral/start/vim-terraform
-	url = https://github.com/hashivim/vim-terraform.git
+  path = files/vim/pack/sysadmiral/start/vim-terraform
+  url = https://github.com/hashivim/vim-terraform.git
+
