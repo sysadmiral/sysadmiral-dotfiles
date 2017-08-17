@@ -4,6 +4,7 @@
     src: "{{ playbook_dir }}/files/dotfiles/_bash_{{ item }}"
     dest: "{{ ansible_env.HOME }}/.bash_{{ item }}"
     state: link
+    force: yes
   with_items:
     - aliases
     - exports
@@ -16,6 +17,7 @@
     src: "{{ playbook_dir }}/files/dotfiles/_{{ item }}rc"
     dest: "{{ ansible_env.HOME }}/.{{ item }}rc"
     state: link
+    force: yes
   with_items:
     - bash
     - input
@@ -26,3 +28,5 @@
   file:
     src: "{{ playbook_dir }}/files/vim/"
     dest: "{{ ansible_env.HOME }}/.vim"
+    state: link
+    force: yes
