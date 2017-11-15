@@ -22,3 +22,5 @@ esac
 #  [[ -r "${file}" ]] && [[ -f "${file}" ]] && source "${file}"
 #done
 #unset file
+
+complete -C /usr/local/bin/terraform terraform
