@@ -53,3 +53,14 @@ pathprepend() {
     fi
   done
 }
+
+bootstrap_git_repo() {
+  if [[ -d .git ]] || [[ $(git rev-parse --is-inside-git-dir &> /dev/null) ]]; then
+    [[ -f .gitignore ]] || echo -n "[INFO]: no .gitignore found"
+    [[ -f .editorconfig ]] || echo -n "[INFO]: no .editorconfig found"
+    [[ -f .pre-commit-config.yaml ]] || echo -n "[INFO]: no .pre-commit-config.yaml found"
+    pre-commit install
+  else
+    echo "are you sure this is a git dir?"
+  fi
+}
