@@ -1,0 +1,11 @@
+# terraform things
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfplan
+
+# Vagrant things
+.vagrant/
+
+# packer things
+packer-manifest.json

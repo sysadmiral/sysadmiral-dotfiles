@@ -1,0 +1,8 @@
+repos:
+- repo: git://github.com/pre-commit/pre-commit-hooks
+  sha: v1.2.3
+  hooks:
+    - id: check-merge-conflict
+    - id: check-byte-order-marker
+    - id: detect-aws-credentials
+    - id: check-yaml
