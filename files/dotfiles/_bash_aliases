@@ -8,7 +8,7 @@ command -v google-chrome &> /dev/null && alias open='google-chrome "$@"' || \
   alias open='echo "google-chrome is not installed"'
 
 #IP addresses
-alias remoteip='curl http://checkip.amazonaws.com'
+alias remoteip='curl https://checkip.amazonaws.com'
 alias localip='__localip'
 
 #go to git dir
