@@ -24,3 +24,14 @@ esac
 #unset file
 
 complete -C /usr/local/bin/terraform terraform
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '${HOME}/google-cloud-sdk/path.bash.inc' ]; then source '${HOME}/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '${HOME}/google-cloud-sdk/completion.bash.inc' ]; then source '${HOME}/google-cloud-sdk/completion.bash.inc'; fi
+
+# bash completion for exercism.io
+if [ -f ~/.config/exercism/exercism_completion.bash ]; then
+  . ~/.config/exercism/exercism_completion.bash
+fi

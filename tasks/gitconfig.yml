@@ -1,0 +1,16 @@
+---
+
+- name: create git config includes directory
+  file:
+    path: "{{ ansible_env.HOME }}/.gitconfig.d"
+    state: directory
+    mode: 0755
+
+- name: copy git config includes files
+  file:
+    src: "{{ playbook_dir }}/files/dotfiles/_gitconfig_{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.gitconfig.d/{{ item }}.gitconfig"
+    state: link
+    force: yes
+  with_items:
+    - personal

@@ -1,2 +1,5 @@
 syntax on
-colorscheme nofrils-dark
+
+if has ('colorscheme') && exists ('colorscheme nofrils-dark')
+  colorscheme nofrils-dark
+endif

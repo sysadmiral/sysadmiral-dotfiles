@@ -28,7 +28,7 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* help:* --version";
   pathappend ${GOROOT}/bin || echo "GOROOT not set. Is Go installed?"
 
 set_go_path() {
-local mygopath="${HOME}/golang"
+local mygopath="${HOME}/go"
 if [[ -d "${mygopath}" ]]; then
   if [[ -z "${GOPATH}" ]]; then
     export GOPATH="${mygopath}"

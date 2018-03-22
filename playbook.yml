@@ -2,9 +2,5 @@
 - hosts: localhost
   tasks:
     - import_tasks: tasks/dotfiles.yml
+    - import_tasks: tasks/gitconfig.yml
     - import_tasks: tasks/gitignore.yml
-
-    - name: remove dangling packages
-      become: true
-      dnf:
-        autoremove: yes
