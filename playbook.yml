@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  connection: local
   tasks:
     - import_tasks: tasks/dotfiles.yml
     - import_tasks: tasks/gitconfig.yml

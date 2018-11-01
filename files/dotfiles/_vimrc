@@ -3,3 +3,5 @@ syntax on
 if has ('colorscheme') && exists ('colorscheme nofrils-dark')
   colorscheme nofrils-dark
 endif
+
+au FileType gitcommit set tw=100

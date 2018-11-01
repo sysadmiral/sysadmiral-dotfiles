@@ -14,3 +14,6 @@
   path = files/vim/pack/sysadmiral/start/vim-terraform
   url = https://github.com/hashivim/vim-terraform.git
 
+[submodule "files/vim/pack/sysadmiral/start/vim-polyglot"]
+	path = files/vim/pack/sysadmiral/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git

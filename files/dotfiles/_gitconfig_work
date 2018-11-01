@@ -1,0 +1,7 @@
+[user]
+  name = Amo Chumber
+  email = amo.chumber@es.catapult.org.uk
+  signingKey = 7642A146C7FF111E36F559B3687B65A49E43B8D5
+[commit]
+  gpgSign = true
+

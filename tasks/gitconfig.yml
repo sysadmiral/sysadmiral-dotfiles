@@ -9,8 +9,9 @@
 - name: copy git config includes files
   file:
     src: "{{ playbook_dir }}/files/dotfiles/_gitconfig_{{ item }}"
-    dest: "{{ ansible_env.HOME }}/.gitconfig.d/{{ item }}.gitconfig"
+    dest: "{{ ansible_env.HOME }}/.gitconfig.d/gitconfig-{{ item }}"
     state: link
     force: yes
   with_items:
     - personal
+    - work
