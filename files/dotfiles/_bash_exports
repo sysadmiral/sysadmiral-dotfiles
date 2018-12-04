@@ -63,3 +63,6 @@ set_go_path
 
 # enable pass extensions
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+
+# export config value for aws go sdk based tools (kops etc)
+export AWS_SDK_LOAD_CONFIG=1
