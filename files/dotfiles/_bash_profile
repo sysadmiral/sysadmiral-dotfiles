@@ -12,11 +12,27 @@ done
 unset file
 
 #source specific files and functions
-[[ -n "${NVM_DIR}" ]] && [[ -s "${NVM_DIR}/nvm.sh" ]] && \
-  source "${NVM_DIR}/nvm.sh" || echo "nvm not installed or install went wrong"
+[[ -s "${NVM_DIR}/nvm.sh" ]] && \
+  source "${NVM_DIR}/nvm.sh" || \
+  echo "nvm not installed or install went wrong"
+[[ -s "${NVM_DIR}/bash_completion" ]] && \
+  source "${NVM_DIR}/bash_completion" || \
+  echo "nvm bash completion setup went wrong"
 
 [[ -s "${HOME}/.avn/bin/avn.sh" ]] && source "${HOME}/.avn/bin/avn.sh" || \
   echo "avn not installed or did you run 'avn setup' yet?"
 
 [[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm" || \
   echo "rvm not installed or install went wrong"
+
+# The next line updates PATH for the Google Cloud SDK.
+[[ -f '~/opt/google-cloud-sdk/path.bash.inc' ]] && \
+  source '~/opt/google-cloud-sdk/path.bash.inc'
+
+# The next line enables shell command completion for gcloud.
+[[ -f '~/opt/google-cloud-sdk/completion.bash.inc' ]] && \
+  source '~/opt/google-cloud-sdk/completion.bash.inc'
+
+[[ -f /usr/local/etc/bash_completion ]] && \
+  source /usr/local/etc/bash_completion
+  
