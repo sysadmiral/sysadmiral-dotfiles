@@ -1,0 +1,5 @@
+#!/usr/bin/env bash 
+
+hash kustomize && source <(kustomize completion bash)
+hash op && source <(op completion bash)
+hash terraform && complete -C terraform terraform

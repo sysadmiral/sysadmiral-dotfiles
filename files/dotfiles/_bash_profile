@@ -4,35 +4,50 @@
 shopt -s extglob;
 shopt -s histappend;
 
+#Load in local config values
+[[ -r ~/.my_local_config ]] && source ~/.my_local_config \
+  || echo "no local config found. skipping"
+
 #Load in our dotfiles
-for file in ~/.{bash_aliases,bash_functions,bash_exports,bash_prompt}; do
+for file in ~/.{bash_aliases,bash_functions,bash_exports,bash_prompt,bash_completions}; do
   [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file" || \
   echo "Could not source ${file}. What up?!"
 done
-unset file
 
 #source specific files and functions
-[[ -s "${NVM_DIR}/nvm.sh" ]] && \
-  source "${NVM_DIR}/nvm.sh" || \
-  echo "nvm not installed or install went wrong"
-[[ -s "${NVM_DIR}/bash_completion" ]] && \
-  source "${NVM_DIR}/bash_completion" || \
-  echo "nvm bash completion setup went wrong"
+[[ -n "${NPM_DEV}" ]] && source ~/.bash_npm_config
 
-[[ -s "${HOME}/.avn/bin/avn.sh" ]] && source "${HOME}/.avn/bin/avn.sh" || \
-  echo "avn not installed or did you run 'avn setup' yet?"
+#[[ -s "${NVM_DIR}/nvm.sh" ]] && \
+#  source "${NVM_DIR}/nvm.sh" || \
+#  echo "nvm not installed or install went wrong"
+#[[ -s "${NVM_DIR}/bash_completion" ]] && \
+#  source "${NVM_DIR}/bash_completion" || \
+#  echo "nvm bash completion setup went wrong"
 
-[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm" || \
-  echo "rvm not installed or install went wrong"
+#[[ -s "${HOME}/.avn/bin/avn.sh" ]] && source "${HOME}/.avn/bin/avn.sh" || \
+#  echo "avn not installed or did you run 'avn setup' yet?"
+
+#[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm" || \
+#  echo "rvm not installed or install went wrong"
 
 # The next line updates PATH for the Google Cloud SDK.
-[[ -f '~/opt/google-cloud-sdk/path.bash.inc' ]] && \
-  source '~/opt/google-cloud-sdk/path.bash.inc'
+#[[ -f '~/opt/google-cloud-sdk/path.bash.inc' ]] && \
+#  source '~/opt/google-cloud-sdk/path.bash.inc'
 
 # The next line enables shell command completion for gcloud.
-[[ -f '~/opt/google-cloud-sdk/completion.bash.inc' ]] && \
-  source '~/opt/google-cloud-sdk/completion.bash.inc'
+#[[ -f '~/opt/google-cloud-sdk/completion.bash.inc' ]] && \
+#  source '~/opt/google-cloud-sdk/completion.bash.inc'
 
 [[ -f /usr/local/etc/bash_completion ]] && \
   source /usr/local/etc/bash_completion
   
+
+# Kubectl shell completion
+source '/home/amo/.kube/completion.bash.inc'
+source '/home/amo/.kube/kops_completion.bash.inc'
+source '/home/amo/.bash_helm.completion'
+
+  
+if [ -e /home/amo/.nix-profile/etc/profile.d/nix.sh ]; then . /home/amo/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export PATH="$HOME/.cargo/bin:$PATH"

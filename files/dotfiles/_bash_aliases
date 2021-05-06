@@ -4,7 +4,7 @@
 alias fullenv='( set -o posix ; set ) | grep -v "__git"'
 
 #open a URL in chrome from the command line
-command -v google-chrome &> /dev/null && alias open='google-chrome "$@"' || \
+command -v firefox &> /dev/null && alias open='firefox -new-tab "$@"' || \
   alias open='echo "google-chrome is not installed"'
 
 #IP addresses
@@ -44,3 +44,10 @@ alias less='less -Ri'
 #alias netdata
 [[ -x /usr/sbin/netdata ]] && alias netdata='open "http://localhost:19999"' || \
   alias netdata='echo "Is netdata installed?  ¯\_(ツ)_/¯"'
+
+alias pack='docker run \
+  -u $(id -u ${USER}):$(getent group docker | cut -d: -f3) \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v $PWD:/workspace \
+  -w /workspace \
+  buildpacksio/pack $@'

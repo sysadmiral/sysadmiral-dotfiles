@@ -43,17 +43,21 @@ set_go_path
 [[ -d "${GOPATH}/bin" ]] && pathappend ${GOPATH}/bin || \
   echo 'Go bindir not found at '${GOPATH}/bin'. Not adding to $PATH.'
 
+# mvn exports
+export MAVEN_HOME="${HOME}/bin/apache-maven-3.6.3"
+pathappend ${MAVEN_HOME}/bin
+
 # haskell/cabal exports - disabled while using shellcheck from packages
 #[[ -d "${HOME}/.cabal/bin" ]] && pathappend ${HOME}/.cabal/bin || \
 #  echo 'Cabal bindir not found at '${HOME}/.cabal/bin'. Is cabal installed?'
 
 # nvm exports
-[[ -d "${HOME}/.nvm" ]] && export NVM_DIR="${HOME}/.nvm" || \
-  echo 'nvm not found in '${HOME}'. Not setting $NVM_DIR.'
+#[[ -d "${HOME}/.nvm" ]] && export NVM_DIR="${HOME}/.nvm" || \
+#  echo 'nvm not found in '${HOME}'. Not setting $NVM_DIR.'
 
 # rvm exports
-[[ -d "${HOME}/.rvm/bin" ]] && pathprepend ${HOME}/.rvm/bin || \
-  echo 'rvm not found in '${HOME}'. Not adding rvm to $PATH.'
+#[[ -d "${HOME}/.rvm/bin" ]] && pathprepend ${HOME}/.rvm/bin || \
+#  echo 'rvm not found in '${HOME}'. Not adding rvm to $PATH.'
 
 # my git dir
 [[ -d "${HOME}/mygit" ]] && export MY_GIT_DIR="${HOME}/mygit"
@@ -66,3 +70,5 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
 # export config value for aws go sdk based tools (kops etc)
 export AWS_SDK_LOAD_CONFIG=1
+
+pathappend ${HOME}/.krew/bin
