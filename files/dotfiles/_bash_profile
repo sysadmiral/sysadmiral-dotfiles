@@ -17,6 +17,9 @@ done
 #source specific files and functions
 [[ -n "${NPM_DEV}" ]] && source ~/.bash_npm_config
 
+# check if we're in WSL and import ssh key to keychain
+[[ -v WSLENV ]] && hash keychain 2> /dev/null && eval $(keychain --eval --agents ssh id_ed25519) || echo "[INFO]: unable to add ssh keys to agent"
+
 #[[ -s "${NVM_DIR}/nvm.sh" ]] && \
 #  source "${NVM_DIR}/nvm.sh" || \
 #  echo "nvm not installed or install went wrong"
@@ -40,13 +43,6 @@ done
 
 [[ -f /usr/local/etc/bash_completion ]] && \
   source /usr/local/etc/bash_completion
-  
-
-# Kubectl shell completion
-source '/home/amo/.kube/completion.bash.inc'
-source '/home/amo/.kube/kops_completion.bash.inc'
-source '/home/amo/.bash_helm.completion'
-
   
 if [ -e /home/amo/.nix-profile/etc/profile.d/nix.sh ]; then . /home/amo/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 

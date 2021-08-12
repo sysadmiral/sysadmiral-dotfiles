@@ -1,5 +1,9 @@
 #!/usr/bin/env bash 
 
-hash kustomize && source <(kustomize completion bash)
-hash op && source <(op completion bash)
-hash terraform && complete -C terraform terraform
+hash kubectl 2> /dev/null && source <(kubectl completion bash) || echo "[INFO]: Couldn't find kubectl on PATH"
+hash kustomize 2> /dev/null && source <(kustomize completion bash) || echo "[INFO]: Couldn't find kustomize on PATH"
+hash op 2> /dev/null && source <(op completion bash) || echo "[INFO]: Couldn't find op on PATH"
+hash terraform 2> /dev/null && complete -C terraform terraform || echo "[INFO]: Couldn't find terraform on PATH"
+
+#source '/home/amo/.kube/kops_completion.bash.inc'
+#source '/home/amo/.bash_helm.completion'

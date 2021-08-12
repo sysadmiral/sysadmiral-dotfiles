@@ -71,4 +71,6 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 # export config value for aws go sdk based tools (kops etc)
 export AWS_SDK_LOAD_CONFIG=1
 
-pathappend ${HOME}/.krew/bin
+[[ -d "${HOME}/.krew/bin" ]] && pathappend ${HOME}/.krew/bin
+
+[[ -d "${HOME}/.local/bin" ]] && pathappend ${HOME}/.local/bin
