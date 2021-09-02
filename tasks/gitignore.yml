@@ -1,12 +1,12 @@
 # build a global gitignore file
 ---
 - name: create working dir
-  file:
+  ansible.builtin.file:
     path: .ansible/gitignore.d/
     state: directory
 
 - name: fetch gitignores of things we want to ignore
-  get_url:
+  ansible.builtin.get_url:
     url: "https://raw.githubusercontent.com/github/gitignore/master/Global/{{ item }}.gitignore"
     dest: ".ansible/gitignore.d/{{ item }}.gitignore"
   with_items:
@@ -22,17 +22,17 @@
     - VisualStudioCode
 
 - name: copy manual gitignore to gitignore.d
-  copy:
+  ansible.builtin.copy:
     src: files/dotfiles/_gitignore
     dest: .ansible/gitignore.d/
 
 - name: assemble global gitignore
-  assemble:
+  ansible.builtin.assemble:
     src: .ansible/gitignore.d/
     dest: "{{ ansible_env.HOME }}/.gitignore"
 
 - name: set global gitignore
-  git_config:
+  community.general.git_config:
     name: core.excludesfile
     scope: global
     value: "{{ ansible_env.HOME }}/.gitignore"

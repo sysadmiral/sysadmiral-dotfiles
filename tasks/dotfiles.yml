@@ -1,6 +1,6 @@
 ---
 - name: add bash related file symlinks
-  file:
+  ansible.builtin.file:
     src: "{{ playbook_dir }}/files/dotfiles/_bash_{{ item }}"
     dest: "{{ ansible_env.HOME }}/.bash_{{ item }}"
     state: link
@@ -15,7 +15,7 @@
     - prompt
 
 - name: add bash rc type file symlinks
-  file:
+  ansible.builtin.file:
     src: "{{ playbook_dir }}/files/dotfiles/_{{ item }}rc"
     dest: "{{ ansible_env.HOME }}/.{{ item }}rc"
     state: link
@@ -27,7 +27,7 @@
     - vim
 
 - name: add vim directory symlink
-  file:
+  ansible.builtin.file:
     src: "{{ playbook_dir }}/files/vim/"
     dest: "{{ ansible_env.HOME }}/.vim"
     state: link
