@@ -1,6 +1,7 @@
 #! /bin/bash
+# shellcheck disable=SC2006,SC2086,SC2061,SC2035,SC1001,SC2164
 
-gitdir=${HOME}/mygit/
+gitdir=${HOME}/mygit/work/energysystemscatapult/
 repos=`find $gitdir -name *\.git | sed 's_'"$gitdir"'__' | cut -d\/ -f1 | \
   sort -u`
 

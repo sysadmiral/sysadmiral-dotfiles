@@ -13,6 +13,7 @@
     - npm_config
     - profile
     - prompt
+    - ruby_config
 
 - name: add bash rc type file symlinks
   ansible.builtin.file:

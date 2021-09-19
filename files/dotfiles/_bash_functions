@@ -1,10 +1,15 @@
 #!/bin/bash
 
+# handy bash functions plus the alias to use them
+
+### show local ip address
 __localip() {
   ip addr show $(route | grep default | awk '{print $8}') | grep inet | awk '{print $1" "$2}' | cut -d\/ -f1
 }
 
-# Start an HTTP server from a directory, optionally specifying the port
+alias localip='__localip'
+
+### Start an HTTP server from PWD, optionally specifying the port
 __server() {
   local port="${1:-8000}"
   sleep 1 && open "http://localhost:${port}/" &
@@ -14,7 +19,9 @@ __server() {
   #python3 -c $'import http.server;\nmap = http.server.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nhttp.server.test();' "$port"
 }
 
-#set volume from command line
+alias server='__server'
+
+### set volume from command line
 __volume() {
   local volumeicon
 
@@ -36,6 +43,8 @@ __volume() {
     notify-send -i /usr/share/icons/Adwaita/48x48/status/${volumeicon} "Volume set to $1"
   fi
 }
+
+alias volume="__volume $1"
 
 yq() {
   docker run --rm -i -v ${PWD}:/workdir mikefarah/yq:3 yq $@

@@ -55,10 +55,6 @@ pathappend ${MAVEN_HOME}/bin
 #[[ -d "${HOME}/.nvm" ]] && export NVM_DIR="${HOME}/.nvm" || \
 #  echo 'nvm not found in '${HOME}'. Not setting $NVM_DIR.'
 
-# rvm exports
-#[[ -d "${HOME}/.rvm/bin" ]] && pathprepend ${HOME}/.rvm/bin || \
-#  echo 'rvm not found in '${HOME}'. Not adding rvm to $PATH.'
-
 # my git dir
 [[ -d "${HOME}/mygit" ]] && export MY_GIT_DIR="${HOME}/mygit"
 
@@ -74,3 +70,8 @@ export AWS_SDK_LOAD_CONFIG=1
 [[ -d "${HOME}/.krew/bin" ]] && pathappend ${HOME}/.krew/bin
 
 [[ -d "${HOME}/.local/bin" ]] && pathappend ${HOME}/.local/bin
+
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_CACHE_HOME=${HOME}/.cache
+export XDG_DATA_HOME=${HOME}/.local/share
+export XDG_STATE_HOME=${HOME}/.local/state

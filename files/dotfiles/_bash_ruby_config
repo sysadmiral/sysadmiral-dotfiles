@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm" || \
+#  echo "rvm not installed or install went wrong"
+
+#[[ -d "${HOME}/.rvm/bin" ]] && pathprepend ${HOME}/.rvm/bin || \
+#  echo 'rvm not found in '${HOME}'. Not adding rvm to $PATH.'

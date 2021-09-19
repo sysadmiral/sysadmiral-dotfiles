@@ -26,7 +26,7 @@
   community.general.git_config:
     name: user.email
     scope: global
-    value: "amo.chumber@matillion.com"
+    value: "amo@sysadmiral.xyz"
 
 - name: set pull to be rebase based
   community.general.git_config:

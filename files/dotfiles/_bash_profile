@@ -14,36 +14,17 @@ for file in ~/.{bash_aliases,bash_functions,bash_exports,bash_prompt,bash_comple
   echo "Could not source ${file}. What up?!"
 done
 
-#source specific files and functions
+# source specific files and functions
 [[ -n "${NPM_DEV}" ]] && source ~/.bash_npm_config
+[[ -n "${RUBY_DEV}" ]] && source ~/.bash_ruby_config
 
 # check if we're in WSL and import ssh key to keychain
-[[ -v WSLENV ]] && hash keychain 2> /dev/null && eval $(keychain --eval --agents ssh id_ed25519) || echo "[INFO]: unable to add ssh keys to agent"
-
-#[[ -s "${NVM_DIR}/nvm.sh" ]] && \
-#  source "${NVM_DIR}/nvm.sh" || \
-#  echo "nvm not installed or install went wrong"
-#[[ -s "${NVM_DIR}/bash_completion" ]] && \
-#  source "${NVM_DIR}/bash_completion" || \
-#  echo "nvm bash completion setup went wrong"
-
-#[[ -s "${HOME}/.avn/bin/avn.sh" ]] && source "${HOME}/.avn/bin/avn.sh" || \
-#  echo "avn not installed or did you run 'avn setup' yet?"
-
-#[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm" || \
-#  echo "rvm not installed or install went wrong"
-
-# The next line updates PATH for the Google Cloud SDK.
-#[[ -f '~/opt/google-cloud-sdk/path.bash.inc' ]] && \
-#  source '~/opt/google-cloud-sdk/path.bash.inc'
-
-# The next line enables shell command completion for gcloud.
-#[[ -f '~/opt/google-cloud-sdk/completion.bash.inc' ]] && \
-#  source '~/opt/google-cloud-sdk/completion.bash.inc'
+[[ -v WSLENV ]] && hash keychain 2> /dev/null && eval $(keychain --eval --agents ssh id_ed25519) || echo "[INFO]: not a WSL environment"
 
 [[ -f /usr/local/etc/bash_completion ]] && \
   source /usr/local/etc/bash_completion
-  
+
 if [ -e /home/amo/.nix-profile/etc/profile.d/nix.sh ]; then . /home/amo/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 export PATH="$HOME/.cargo/bin:$PATH"
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
