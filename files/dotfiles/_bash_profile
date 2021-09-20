@@ -1,30 +1,37 @@
-#!/bin/bash
-
 #bash environment
 shopt -s extglob;
 shopt -s histappend;
 
 #Load in local config values
-[[ -r ~/.my_local_config ]] && source ~/.my_local_config \
+[[ -r "${HOME}/.my_local_config" ]] \
+  && source "${HOME}/.my_local_config" \
   || echo "no local config found. skipping"
 
 #Load in our dotfiles
-for file in ~/.{bash_aliases,bash_functions,bash_exports,bash_prompt,bash_completions}; do
-  [[ -r "$file" ]] && [[ -f "$file" ]] && source "$file" || \
-  echo "Could not source ${file}. What up?!"
+for file in "${HOME}"/.{bash_aliases,bash_functions,bash_exports,bash_prompt,bash_completions}; do
+  [[ -r "$file" ]] \
+  && [[ -f "$file" ]] \
+  && source "$file" \
+  || echo "Could not source ${file}. What up?!"
 done
 
 # source specific files and functions
-[[ -n "${NPM_DEV}" ]] && source ~/.bash_npm_config
-[[ -n "${RUBY_DEV}" ]] && source ~/.bash_ruby_config
+[[ -n "${NPM_DEV}" ]] \
+  && source "${HOME}/.bash_npm_config" \
+  || true
+
+[[ -n "${RUBY_DEV}" ]] \
+  && source "${HOME}/.bash_ruby_config" \
+  || true
 
 # check if we're in WSL and import ssh key to keychain
-[[ -v WSLENV ]] && hash keychain 2> /dev/null && eval $(keychain --eval --agents ssh id_ed25519) || echo "[INFO]: not a WSL environment"
+[[ -v WSLENV ]] \
+  && hash keychain 2> /dev/null \
+  && eval "$(keychain --eval --agents ssh id_ed25519)" \
+  || echo "[INFO]: not a WSL environment"
 
-[[ -f /usr/local/etc/bash_completion ]] && \
-  source /usr/local/etc/bash_completion
+# if [ -e /home/amo/.nix-profile/etc/profile.d/nix.sh ]; then . /home/amo/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-if [ -e /home/amo/.nix-profile/etc/profile.d/nix.sh ]; then . /home/amo/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-export PATH="$HOME/.cargo/bin:$PATH"
-[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+[[ -d "$HOME/.cargo/bin" ]] \
+  && export PATH="$HOME/.cargo/bin:$PATH" \
+  || echo "cargo package dir not found"

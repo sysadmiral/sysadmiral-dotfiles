@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # handy bash functions plus the alias to use them
 
 ### show local ip address

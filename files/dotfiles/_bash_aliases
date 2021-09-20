@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ### .. - lazy cd'ing
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -13,16 +11,19 @@ alias fullenv='( set -o posix ; set ) | grep -v "__git"'
 alias less='less -Ri'
 
 ### mg - go to mygit dir
-[[ -d "${HOME}/mygit" ]] && alias mg='cd "${HOME}"/mygit; ls' || \
-  alias mg='echo "${HOME}"/mygit is not a dir. Set this up first...'
+[[ -d "${HOME}/mygit" ]] \
+  && alias mg='cd "${HOME}"/mygit; ls' \
+  || alias mg='echo "${HOME}"/mygit is not a dir. Set this up first...'
 
 ### netdata - open a netdata tab (if installed)
-[[ -x /usr/sbin/netdata ]] && alias netdata='open "http://localhost:19999"' || \
-  alias netdata='echo "Is netdata installed?  ¯\_(ツ)_/¯"'
+[[ -x /usr/sbin/netdata ]] \
+  && alias netdata='open "http://localhost:19999"' \
+  || alias netdata='echo "Is netdata installed?  ¯\_(ツ)_/¯"'
 
 ### open - open a URL in firefox from the command line
-hash firefox 2> /dev/null && alias open='firefox -new-tab "$@"' || \
-  alias open='echo "firefox is not installed"'
+hash firefox 2> /dev/null \
+  && alias open='firefox -new-tab "$@"' \
+  || alias open='echo "firefox is not installed"'
 
 ### pack - run buildpacks
 alias pack='docker run \
@@ -33,8 +34,9 @@ alias pack='docker run \
   buildpacksio/pack $@'
 
 ### packer.io - alias packer to packer.io because of https://github.com/mitchellh/packer/issues/1117
-[[ -x /usr/local/bin/packer ]] && alias packer.io=/usr/local/bin/packer || \
-  alias packer.io='echo /usr/local/bin/packer is not there. Install Packer first???'
+[[ -x /usr/local/bin/packer ]] \
+  && alias packer.io=/usr/local/bin/packer \
+  || alias packer.io='echo /usr/local/bin/packer is not there. Install Packer first???'
 
 ### remoteip - show remote (WAN) IP address
 alias remoteip='curl https://checkip.amazonaws.com'

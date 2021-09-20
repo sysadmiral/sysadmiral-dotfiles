@@ -1,14 +1,17 @@
-#!/usr/bin/env bash
-
 ### test for tools that I use a lot and add their shell completions or give warnings where they can't be found
 
-hash helm 2> /dev/null && source <(helm completion bash) || \
-  echo "[INFO]: Couldn't find helm on PATH"
-hash kubectl 2> /dev/null && source <(kubectl completion bash) || \
-  echo "[INFO]: Couldn't find kubectl on PATH"
-hash kustomize 2> /dev/null && source <(kustomize completion bash) || \
-  echo "[INFO]: Couldn't find kustomize on PATH"
-hash op 2> /dev/null && source <(op completion bash) || \
-  echo "[INFO]: Couldn't find op on PATH"
-hash terraform 2> /dev/null && complete -C terraform terraform || \
-  echo "[INFO]: Couldn't find terraform on PATH"
+hash helm 2> /dev/null \
+  && source <(helm completion bash) \
+  || echo "[INFO]: Couldn't find helm on PATH"
+hash kubectl 2> /dev/null \
+  && source <(kubectl completion bash) \
+  || echo "[INFO]: Couldn't find kubectl on PATH"
+hash kustomize 2> /dev/null \
+  && source <(kustomize completion bash) \
+  || echo "[INFO]: Couldn't find kustomize on PATH"
+hash op 2> /dev/null \
+  && source <(op completion bash) \
+  || echo "[INFO]: Couldn't find op on PATH"
+hash terraform 2> /dev/null \
+  && complete -C terraform terraform \
+  || echo "[INFO]: Couldn't find terraform on PATH"
