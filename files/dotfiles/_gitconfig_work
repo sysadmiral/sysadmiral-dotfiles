@@ -1,7 +1,7 @@
 [user]
   name = Amo Chumber
-  email = amo.chumber@matillion.com
-  signingKey = 29991F8AD162ED102605681FD27762A7EBB107CD
+  email = amo.chumber@cts.co
+  signingKey = FF67B67173186CFB082487CBE6F4BD2B46580870
 [commit]
   gpgSign = true
 
