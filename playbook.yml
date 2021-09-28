@@ -1,6 +1,8 @@
 ---
 - hosts: localhost
   connection: local
+  roles:
+    - { role: install-keybase, become: yes }
   tasks:
     - import_tasks: tasks/dotfiles.yml
     - import_tasks: tasks/gitconfig.yml

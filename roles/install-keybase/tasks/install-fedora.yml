@@ -1,0 +1,14 @@
+---
+# roles/tasks/install-keybase/install-fedora.yml
+
+- name: Add keybase repository
+  yum_repository:
+    name: keybase
+    description: keybase
+    baseurl: http://prerelease.keybase.io/rpm/x86_64
+    enabled: true
+    gpgcheck: yes
+    gpgkey: https://keybase.io/docs/server_security/code_signing_key.asc
+    metadata_expire: 60
+    file: keybase
+    async: no

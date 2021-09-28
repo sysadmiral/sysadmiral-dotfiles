@@ -1,0 +1,11 @@
+---
+# roles/tasks/install-keybase/main.yml
+
+- name: import install-fedora if distribution is fedora
+  import_tasks: install-fedora.yml
+  when: ansible_distribution == "Fedora"
+
+- name: install keybase
+  ansible.builtin.package:
+    name: keybase
+    state: present
