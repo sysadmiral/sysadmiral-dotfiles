@@ -1,5 +1,5 @@
 ---
-# roles/install-keybase/tasks/main.yml
+# roles/install-1password/tasks/main.yml
 
 - name: import install-fedora if distribution is fedora
   import_tasks: install-fedora.yml
@@ -9,7 +9,7 @@
   import_tasks: install-ubuntu.yml
   when: ansible_distribution == "Ubuntu"
 
-- name: install keybase
+- name: install 1password
   ansible.builtin.package:
-    name: keybase
+    name: 1password
     state: present

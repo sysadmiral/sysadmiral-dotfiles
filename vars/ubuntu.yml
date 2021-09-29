@@ -1,0 +1,3 @@
+---
+# vars/ubuntu.yml
+vim_package_name: vim

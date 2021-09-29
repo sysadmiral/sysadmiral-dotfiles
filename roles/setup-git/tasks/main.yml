@@ -1,6 +1,39 @@
-# build a global gitignore file
 ---
-- name: create working dir
+# roles/setup-git/tasks/main.yml
+
+- name: set pull to be rebase based
+  community.general.git_config:
+    name: pull.rebase
+    scope: global
+    value: "true"
+
+- name: set git name
+  community.general.git_config:
+    name: user.name
+    scope: global
+    value: "{{ git_user_name }}"
+
+- name: set git email
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "{{ git_user_email }}"
+
+- name: set git signingKey
+  community.general.git_config:
+    name: user.signingKey
+    scope: global
+    value: "{{ git_user_signingKey }}"
+
+- name: always sign commits
+  community.general.git_config:
+    name: commit.gpgsign
+    scope: global
+    value: 'true'
+
+# build a global gitignore
+
+- name: create working dir for gitignore
   ansible.builtin.file:
     path: .ansible/gitignore.d/
     state: directory

@@ -1,0 +1,13 @@
+---
+# roles/tasks/install-keybase/install-fedora.yml
+
+- name: Add keybase signing key
+  apt_key:
+    id: '47484E50656D16C7'
+    keyserver: keyserver.ubuntu.com
+
+- name: Add keybase repository
+  apt_repository:
+    repo: deb http://prerelease.keybase.io/deb stable main
+    filename: keybase
+    update_cache: yes

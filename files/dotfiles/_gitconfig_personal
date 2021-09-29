@@ -1,6 +1,0 @@
-[user]
-  name = Amo Chumber
-  email = amo@sysadmiral.xyz
-  signingkey = 822F159EBEFB9563
-[commit]
-  gpgsign = true

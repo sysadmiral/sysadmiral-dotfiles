@@ -1,7 +1,0 @@
-[user]
-  name = Amo Chumber
-  email = amo.chumber@cts.co
-  signingKey = FF67B67173186CFB082487CBE6F4BD2B46580870
-[commit]
-  gpgSign = true
-

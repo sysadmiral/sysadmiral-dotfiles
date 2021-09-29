@@ -9,5 +9,9 @@ My normal distro of choice is Fedora Workstation although I also use Ubuntu LTS 
 To install these files you will need ansible and in the root of this repo run:
 
 ```shell
+git submodule update --init --recursive
 ansible-playbook --ask-become-pass playbook.yml
+
+# or if it's a work laptop
+ansible-playbook --ask-become-pass playbook.yml -e "git_user_email=$WORKEMAILADDRESS"
 ```

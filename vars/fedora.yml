@@ -1,0 +1,3 @@
+---
+# vars/fedora.yml
+vim_package_name: vim-enhanced

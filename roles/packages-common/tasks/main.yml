@@ -1,0 +1,14 @@
+---
+# roles/packages-common/tasks/main.yml
+
+- name: Install the common packages I want
+  ansible.builtin.package:
+    name:
+      - curl
+      - git
+      - gnome-tweaks
+      - "{{ vim_package_name }}"
+    state: latest
+
+# - google-chrome
+# - 1password

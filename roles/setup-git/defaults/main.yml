@@ -1,0 +1,6 @@
+---
+# roles/setup-git/defaults/main.yml
+
+git_user_name: "Amo Chumber"
+git_user_email: "amo@sysadmiral.xyz"
+git_user_signingKey: "ED53EE203E8E8A1375829D11822F159EBEFB9563"

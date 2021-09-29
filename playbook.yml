@@ -1,9 +1,46 @@
 ---
 - hosts: localhost
   connection: local
-  roles:
-    - { role: install-keybase, become: yes }
+
   tasks:
+    - name: load vars
+      include_vars: "{{ ansible_distribution | lower }}.yml"
+
+    - name: install pre-requisites
+      include_role:
+        name: "prereqs-{{ ansible_distribution | lower }}"
+        apply:
+          become: yes
+
+    - name: install common packages
+      include_role:
+        name: packages-common
+        apply:
+          become: yes
+
+    - name: install-keybase
+      include_role:
+        name: install-keybase
+        apply:
+          become: yes
+
+    # - name: install 1password
+    #   include_role:
+    #     name: install-1password
+    #     apply:
+    #       become: yes
+
+    - name: install-docker
+      include_role:
+        name: geerlingguy.docker
+        apply:
+          become: yes
+      vars:
+        docker_users:
+          - amo
+
+    - name: setup git
+      include_role:
+        name: setup-git
+
     - import_tasks: tasks/dotfiles.yml
-    - import_tasks: tasks/gitconfig.yml
-    - import_tasks: tasks/gitignore.yml

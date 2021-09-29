@@ -4,4 +4,8 @@ if has ('colorscheme') && exists ('colorscheme nofrils-dark')
   colorscheme nofrils-dark
 endif
 
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
 au FileType gitcommit set tw=100
