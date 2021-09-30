@@ -1,6 +1,10 @@
 ---
 # roles/packages-common/tasks/main.yml
 
+- name: setup git ppa on ubuntu
+  ansible.builtin.apt_repository:
+    repo: ppa:git-core/ppa
+
 - name: Install the common packages I want
   ansible.builtin.package:
     name:
