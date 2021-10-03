@@ -1,3 +1,15 @@
+# files/dotfiles/_bash_completions
+
+### import os completions
+
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] \
+  && source /usr/share/bash-completion/bash_completion
+
+for file in /etc/bash_completion.d/* ; do
+  [[ -r "${file}" ]] && [[ -f "${file}" ]] && source "${file}"
+done
+unset file
+
 ### test for tools that I use a lot and add their shell completions or give warnings where they can't be found
 
 hash helm 2> /dev/null \

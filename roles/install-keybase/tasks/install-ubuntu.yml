@@ -1,5 +1,5 @@
 ---
-# roles/tasks/install-keybase/install-fedora.yml
+# roles/install-keybase/tasks/install-ubuntu.yml
 
 - name: Add keybase signing key
   apt_key:

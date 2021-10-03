@@ -1,0 +1,8 @@
+---
+# roles/prereqs-fedora/tasks/main.yml
+
+- name: install fedora specific prerequisite packages
+  ansible.builtin.package:
+    name:
+      - dnf-plugins-core
+    state: latest
