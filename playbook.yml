@@ -4,7 +4,12 @@
 
   tasks:
     - name: load vars
+      include_vars: main.yml
+
+    - name: load distribution vars
       include_vars: "{{ ansible_distribution | lower }}.yml"
+
+    - import_tasks: tasks/dotfiles.yml
 
     - name: install pre-requisites
       include_role:
@@ -17,6 +22,10 @@
         name: packages-common
         apply:
           become: yes
+
+    - name: setup git
+      include_role:
+        name: setup-git
 
     - name: install-keybase
       include_role:
@@ -38,9 +47,4 @@
       vars:
         docker_users:
           - amo
-
-    - name: setup git
-      include_role:
-        name: setup-git
-
-    - import_tasks: tasks/dotfiles.yml
+      when: container_dev | bool
