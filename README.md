@@ -15,3 +15,17 @@ ansible-playbook --ask-become-pass playbook.yml
 # or if it's a work laptop
 ansible-playbook --ask-become-pass playbook.yml -e "git_user_email=$WORKEMAILADDRESS"
 ```
+
+## add extra_vars to make ansible init other things
+
+> don't forget to use the same vars each time you run ansible on that same machine in the future
+
+### add docker and shell things for working with containers
+```shell
+-e "container_dev=true"
+```
+
+### add gcloud and shell things for gcloud
+```shell
+-e "gcp_dev=true"
+```
