@@ -1,0 +1,15 @@
+---
+# roles/install-google-cloud-sdk/tasks/main.yml
+
+- name: import install-fedora if distribution is fedora
+  import_tasks: install-fedora.yml
+  when: ansible_distribution == "Fedora"
+
+- name: import install-ubuntu if distribution is ubuntu
+  import_tasks: install-ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: install google-cloud-sdk
+  ansible.builtin.package:
+    name: google-cloud-sdk
+    state: present

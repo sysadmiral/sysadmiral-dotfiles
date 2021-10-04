@@ -1,0 +1,13 @@
+---
+# roles/install-google-cloud-sdk/tasks/install-ubuntu.yml
+
+- name: add google-cloud-sdk signing key
+  ansible.builtin.apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    keyring: /usr/share/keyrings/cloud.google.gpg
+
+- name: add google-cloud-sdk repository
+  ansible.builtin.apt_repository:
+    repo: 'deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main'
+    filename: google-cloud-sdk
+    update_cache: yes

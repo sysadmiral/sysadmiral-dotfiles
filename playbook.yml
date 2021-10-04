@@ -48,3 +48,10 @@
         docker_users:
           - amo
       when: container_dev | bool
+
+    - name: install-google-cloud-sdk
+      include_role:
+        name: install-google-cloud-sdk
+        apply:
+          become: yes
+      when: gcp_dev | bool

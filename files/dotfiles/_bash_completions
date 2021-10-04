@@ -12,6 +12,8 @@ unset file
 
 ### test for tools that I use a lot and add their shell completions or give warnings where they can't be found
 
+hash gcloud 2> /dev/null \
+  || echo "[INFO]: Couldn't find gcloud on PATH"
 hash helm 2> /dev/null \
   && source <(helm completion bash) \
   || echo "[INFO]: Couldn't find helm on PATH"
@@ -27,3 +29,8 @@ hash op 2> /dev/null \
 hash terraform 2> /dev/null \
   && complete -C terraform terraform \
   || echo "[INFO]: Couldn't find terraform on PATH"
+
+# bash completion for exercism.io
+#if [ -f ~/.config/exercism/exercism_completion.bash ]; then
+#  . ~/.config/exercism/exercism_completion.bash
+#fi
