@@ -1,0 +1,8 @@
+---
+# roles/setup-shell-env/tasks/main.yml
+
+- name: create local bindir
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/bin"
+    state: directory
+    mode: '0755'
