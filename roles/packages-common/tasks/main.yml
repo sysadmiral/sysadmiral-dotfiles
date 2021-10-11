@@ -1,9 +1,12 @@
 ---
 # roles/packages-common/tasks/main.yml
 
-- name: setup git ppa on ubuntu
-  ansible.builtin.apt_repository:
-    repo: ppa:git-core/ppa
+- name: import packages-common-fedora if distribution is fedora
+  import_tasks: packages-common-fedora.yml
+  when: ansible_distribution == "Fedora"
+
+- name: import packages-common-ubuntu if distribution is ubuntu
+  import_tasks: packages-common-ubuntu.yml
   when: ansible_distribution == "Ubuntu"
 
 - name: Install the common packages I want

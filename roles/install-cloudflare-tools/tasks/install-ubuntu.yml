@@ -1,0 +1,13 @@
+---
+# roles/install-cloudflare-tools/tasks/install-ubuntu.yml
+
+- name: add signing key
+  ansible.builtin.apt_key:
+    url: https://pkg.cloudflare.com/pubkey.gpg
+    keyring: /usr/share/keyrings/cloudflare.gpg
+
+- name: add repository
+  ansible.builtin.apt_repository:
+    repo: 'deb [signed-by=/usr/share/keyrings/cloudflare.gpg] http://pkg.cloudflare.com/ focal main'
+    filename: cloudflare
+    update_cache: yes

@@ -1,0 +1,16 @@
+---
+# roles/install-cloudflare-tools/tasks/main.yml
+
+- name: import install-fedora if distribution is fedora
+  import_tasks: install-fedora.yml
+  when: ansible_distribution == "Fedora"
+
+- name: import install-ubuntu if distribution is ubuntu
+  import_tasks: install-ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: install tools
+  ansible.builtin.package:
+    name:
+    - cloudflared
+    state: latest

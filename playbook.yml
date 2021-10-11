@@ -59,3 +59,10 @@
         apply:
           become: yes
       when: gcp_dev | bool
+
+    - name: install-cloudflare-tools
+      include_role:
+        name: install-cloudflare-tools
+        apply:
+          become: yes
+      when: cf_tools | bool
